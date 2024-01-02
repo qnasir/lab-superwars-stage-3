@@ -23,23 +23,20 @@ const PLAYERS = [
 
 // initialize players with image and strength
 const initPlayers = (players) => {
-    // let detailedPlayers = [];
 
     // Instead of forloop use Map method
     // Code here
     let detailedPlayers = []
-    players.map((player , i  )=>{
-        
-        let hero_or_villain = i%2==0 ? "hero" : "villain"
-        let obj =  {
-            name : player,
-            strength : getRandomStrength(), 
-            image: `./images/super-${i+1}.png`,
-            type: hero_or_villain,
-        }
-        detailedPlayers.push(obj)
-    })
-    // console.log(detailedPlayers);
+    
+    players.forEach((player,index) => {
+        detailedPlayers.push({
+            name:player,
+            strength:(2+index),
+            image:'images/super-' + (index + 1) + '.png',
+            type: index%2==0?"hero":"villain",
+            id:index+1
+        })
+    });
     return detailedPlayers;
 }
 
